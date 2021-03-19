@@ -1,13 +1,42 @@
 {
-    "name": "Find Boob",
-    "description": "Find boob in giphy",
-    "version": "1.0",
-    "browser_action": {
-      "default_icon": "icon.png",
-      "default_popup": "popup.html"
+  "name": "Find Boob",
+  "description": "Find boob in giphy",
+  "version": "1.0",
+  "icons": {
+    "16": "imgs/icon16.png",
+    "128": "imgs/icon1.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "imgs/icon16.png",
+      "38": "imgs/icon1.png"
     },
-    "permissions": [
-      "http://api.giphy.com/"
-    ],
-    "manifest_version": 2
-  }
+    "default_popup": "popup.html",
+    "default_title": "findN pro vip"
+  },
+  "background": {
+    "page": "background.html",
+    "persistent": false
+  },
+  "permissions": [
+    "http://api.giphy.com/",
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://nhaccuatui.com/bai-hat/*"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "css": [
+        "styles/font.css",
+        "styles/main.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "manifest_version": 2
+}
